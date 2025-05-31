@@ -46,6 +46,65 @@ git clean -f                    # Delete untracked files
 
 # ==== VIEW CONFIGS ====
 git config --global --list      # View all global config
+______________________________________________________________________________________
+# STEP 1: Configure your Git identity (do this only once)
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+
+# STEP 2: Create or move to your project folder
+cd path/to/your/project
+mkdir Project-Name
+cd Project-Name
+
+# STEP 3: Initialize a new Git repository
+git init
+
+# STEP 4: (Optional but recommended) Create a README file
+echo "# Project Title" > README.md
+
+# STEP 5: Add files to staging area
+git add README.md
+# or add all files using:
+git add .
+
+# STEP 6: Commit your changes with a message
+git commit -m "Initial commit"
+
+# STEP 7: Rename your branch to 'main' (modern standard)
+git branch -M main
+
+# STEP 8: Connect your local repo to GitHub
+git remote add origin https://github.com/YourUsername/YourRepo.git
+
+# STEP 9: Push your code to GitHub (first time)
+git push -u origin main
+
+# ----------------------------------------
+# Additional Common Git Commands
+# ----------------------------------------
+
+# Check status of changes
+git status
+
+# View current branch
+git branch
+
+# Create a new branch
+git checkout -b new-branch-name
+
+# Switch between branches
+git checkout branch-name
+
+# View commit history
+git log
+
+# Pull latest changes from GitHub
+git pull origin main
+
+# Push new changes after editing files
+git add .
+git commit -m "your update message"
+git push
 
 
 
