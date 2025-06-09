@@ -1,3 +1,132 @@
+Real-life use cases
+# ==== SETUP GIT (Only once per machine) ====
+git config --global user.name "Your Name"
+git config --global user.email "your@email.com"
+
+# ==== USE CASE: START A NEW PROJECT ====
+mkdir MyProject
+cd MyProject
+git init
+touch README.md
+echo "# MyProject" > README.md
+git add README.md
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin https://github.com/YourUsername/MyProject.git
+git push -u origin main
+
+# ==== USE CASE: WORK ON NEW FEATURE ====
+git checkout -b feature-branch      # create & switch to feature branch
+# ...make changes
+git add .
+git commit -m "Added new feature"
+git push -u origin feature-branch
+
+# ==== USE CASE: UPDATE MAIN WITH LATEST CODE ====
+git checkout main
+git pull origin main
+
+# ==== USE CASE: MERGE FEATURE TO MAIN ====
+git checkout main
+git pull origin main                # get latest
+git merge feature-branch
+git push origin main
+
+# ==== USE CASE: CHECK FILE STATUS AND HISTORY ====
+git status                          # shows what's changed
+git log                             # detailed commit log
+git log --oneline                   # summary log
+
+# ==== USE CASE: UNDO MISTAKES ====
+git restore <file>                  # discard changes in file
+git reset HEAD~1                    # undo last commit, keep files
+git reset --hard HEAD~1             # undo commit AND file changes
+
+# ==== USE CASE: WORKING WITH MULTIPLE FILES ====
+touch index.html style.css script.js
+echo "<h1>Hello</h1>" > index.html
+echo "body { background: #eee; }" > style.css
+
+# ==== USE CASE: CLONE AN EXISTING PROJECT ====
+git clone https://github.com/SomeoneElse/RepoName.git
+cd RepoName
+
+# ==== USE CASE: CONNECTING TO A DIFFERENT REMOTE ====
+git remote -v                       # view remotes
+git remote remove origin            # remove current origin
+git remote add origin <new-url>     # add new one
+
+# ==== USE CASE: PULL LATEST CHANGES FROM TEAM ====
+git pull origin main
+
+# ==== USE CASE: PUSH LATEST CHANGES TO GITHUB ====
+git add .
+git commit -m "Final tweaks"
+git push
+
+# ==== BONUS: VIEW CURRENT BRANCH ====
+git branch
+
+________________________________________________________________________________
+# ==== GIT BASIC SETUP ====
+git config --global user.name "Your Name"
+git config --global user.email "your@email.com"
+
+# ==== CREATE & NAVIGATE TO PROJECT FOLDER ====
+mkdir Project-Name
+cd Project-Name
+
+# ==== INITIALIZE GIT REPO ====
+git init
+
+# ==== CREATE FILES (empty or with content) ====
+
+# Option 1: Create empty file
+touch README.md
+
+# Option 2: Create file with content
+echo "# Project Title" > README.md
+echo "console.log('Hello, Git!');" > script.js
+
+# ==== CHECK FILES IN DIRECTORY ====
+ls
+
+# ==== ADD FILES TO STAGING AREA ====
+git add README.md
+# or to add everything:
+git add .
+
+# ==== COMMIT FILES ====
+git commit -m "Initial commit"
+
+# ==== RENAME DEFAULT BRANCH TO MAIN ====
+git branch -M main
+
+# ==== ADD REMOTE ORIGIN (GitHub repo) ====
+git remote add origin https://github.com/YourUsername/YourRepo.git
+
+# ==== PUSH TO REMOTE ====
+git push -u origin main
+
+# ==== VIEW CURRENT STATUS ====
+git status
+
+# ==== VIEW COMMIT LOG ====
+git log
+git log --oneline
+
+# ==== CREATE & SWITCH BRANCHES ====
+git checkout -b feature-branch   # Create and switch
+git checkout main                # Switch to main
+
+# ==== ADD & PUSH CHANGES AFTER UPDATES ====
+git add .
+git commit -m "Your update message"
+git push
+
+# ==== PULL LATEST CHANGES FROM GITHUB ====
+git pull origin main
+
 # ==== GIT BASIC SETUP ====
 git config --global user.name "Your Name"
 git config --global user.email "your@email.com"
