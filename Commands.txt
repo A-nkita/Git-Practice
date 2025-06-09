@@ -235,6 +235,77 @@ git add .
 git commit -m "your update message"
 git push
 
+______________________________________________________________________________________________
+# ==== ECHO COMMANDS ====
+
+# Print text to the terminal
+echo "Hello, Git!"
+
+# Create a new file with text (overwrites if file exists)
+echo "This is my file." > file.txt
+
+# Append text to an existing file (adds below existing content)
+echo "This is an extra line." >> file.txt
+
+# Add multiple lines using multiple echo commands
+echo "First line of the file." > notes.txt
+echo "Second line added." >> notes.txt
+echo "Third line added too." >> notes.txt
+
+# Create a basic README file
+echo "# My Project" > README.md
+
+
+# ==== CAT COMMANDS ====
+
+# View contents of a file
+cat file.txt
+
+# Create a new file and type content directly into it
+# After running this, type your lines and press Ctrl + D to save and exit
+cat > newfile.txt
+
+# Append more content to an existing file using cat
+# Again, type your content and press Ctrl + D
+cat >> existingfile.txt
+
+# Combine contents of two or more files into one
+cat file1.txt file2.txt > merged.txt
+
+# View contents of multiple files at once
+cat file1.txt file2.txt
+
+
+# ==== BONUS TIPS ====
+
+# Use echo and cat together for fast testing
+echo "Hello world" > test.txt
+cat test.txt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
