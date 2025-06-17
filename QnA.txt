@@ -1,0 +1,283 @@
+==============================
+GIT INTERVIEW QUESTIONS & ANSWERS
+==============================
+
+------------------------------
+🔹 BEGINNER LEVEL
+------------------------------
+
+1. What is Git? How is it different from GitHub?
+Git is a distributed version control system used to track changes in source code. GitHub is a cloud-based hosting service for Git repositories that helps with collaboration and sharing.
+
+2. What is version control? Why do we use Git?
+Version control is a system that records changes to files over time. Git helps developers collaborate, manage versions, and undo mistakes.
+
+3. What’s the difference between `git init` and `git clone`?
+- `git init` creates a new Git repository in the current directory.
+- `git clone` copies an existing repository (usually from GitHub) into a new folder.
+
+4. How do you check the status of your working directory in Git?
+Use `git status` to see untracked, modified, and staged files.
+
+5. What is the purpose of `git add` and `git commit`?
+- `git add` stages changes.
+- `git commit` saves them into the local Git history with a message.
+
+6. What does `git status` show you?
+It shows the current branch, untracked files, modified files, and staged files.
+
+7. What is the difference between `git push` and `git pull`?
+- `git push` uploads local commits to the remote repo.
+- `git pull` downloads changes from the remote and merges them into your local branch.
+
+8. What does `git log` show?
+It shows the commit history, including author, message, and commit hash.
+
+9. What’s the difference between tracked and untracked files?
+- Tracked files are being tracked by Git and included in commits.
+- Untracked files are new and not yet added to version control.
+
+10. How do you check which branch you are currently on?
+Use `git branch` — the current branch will be marked with an asterisk (*).
+
+------------------------------
+🔹 INTERMEDIATE LEVEL
+------------------------------
+
+11. What is the difference between `git fetch` and `git pull`?
+- `git fetch` gets updates from remote but does not merge them.
+- `git pull` does `fetch` + `merge` in one step.
+
+12. What is a merge conflict and how do you resolve it?
+A merge conflict occurs when Git can't automatically merge changes. You resolve it by editing the conflicting file manually, then staging and committing the resolved version.
+
+13. What is `HEAD` in Git?
+`HEAD` refers to the current commit your working directory is based on. Usually, it points to the latest commit in your current branch.
+
+14. How do you undo a commit?
+- Use `git reset --soft HEAD~1` to undo the commit but keep changes staged.
+- Use `git reset --hard HEAD~1` to delete the commit and discard all changes.
+
+15. What is the difference between `git merge` and `git rebase`?
+- `git merge` combines two branches and creates a merge commit.
+- `git rebase` reapplies commits on top of another branch to make history cleaner.
+
+16. How do you create and switch to a new branch?
+`git checkout -b branch-name`
+
+17. What is a remote repository in Git?
+It’s a version of your project hosted on the internet (e.g., GitHub). You connect to it using a URL and push/pull changes.
+
+18. How do you view the differences between commits or working files?
+Use `git diff` to compare changes:
+- `git diff` shows unstaged changes
+- `git diff --staged` shows staged changes
+
+19. How do you discard changes in a file?
+Use `git checkout -- filename` to restore the last committed version of the file.
+
+20. How do you delete a branch?
+- Delete local branch: `git branch -d branch-name`
+- Delete remote branch: `git push origin --delete branch-name`
+
+------------------------------
+
+==============================
+GIT INTERVIEW QUESTIONS – ADVANCED ROUND
+==============================
+
+------------------------------
+🔹 BRANCHING & HISTORY
+------------------------------
+
+1. What is the difference between a local and a remote branch?
+- Local branch exists on your machine.
+- Remote branch is on GitHub or other remotes. You use `git push/pull/fetch` to sync them.
+
+2. How do you track a remote branch?
+`git branch --set-upstream-to=origin/branch-name`
+
+3. What is a detached HEAD state?
+It happens when HEAD is pointing to a commit directly, not a branch. You can still browse and edit, but changes won’t be saved to a branch unless you create one.
+
+4. What is cherry-picking in Git?
+`git cherry-pick <commit>` applies a specific commit from another branch onto your current branch.
+
+5. How do you squash commits?
+Use `git rebase -i HEAD~n`, mark earlier commits as `squash` or `fixup`, and Git will combine them into one.
+
+------------------------------
+🔹 REWRITING HISTORY
+------------------------------
+
+6. What does `git rebase` do? When is it dangerous?
+It reapplies commits on top of another branch. It's dangerous on **shared branches** because it rewrites commit history — can confuse others.
+
+7. When would you use `git revert` over `git reset`?
+- `git revert` creates a new commit that undoes previous ones (safe for shared branches).
+- `git reset` changes history (not safe for already-pushed commits).
+
+8. How do you change the last commit message?
+`git commit --amend`
+
+9. How do you remove untracked files from a Git repo?
+`git clean -f`  
+Add `-d` for directories: `git clean -fd`
+
+10. How do you roll back to a previous commit and keep changes?
+Use `git reset --soft <commit>` — resets history but keeps your working directory untouched.
+
+------------------------------
+🔹 REMOTES & COLLABORATION
+------------------------------
+
+11. What’s the difference between `origin/HEAD` and `HEAD`?
+- `HEAD` is your current local commit pointer.
+- `origin/HEAD` is the default branch pointer on the remote (e.g., `origin/main`).
+
+12. How do you resolve a conflict during a rebase?
+- Open conflicting file, fix manually
+- `git add .`
+- `git rebase --continue`
+
+13. How do you rename a remote branch?
+```bash
+git push origin old-name:refs/heads/new-name
+git push origin --delete old-name
+
+==============================
+GIT INTERVIEW QUESTIONS – ADVANCED ROUND (CONTINUED)
+==============================
+
+14. How do you remove untracked files from a Git repo?
+Use:
+    git clean -f        # remove untracked files
+    git clean -fd       # remove untracked files + folders
+
+15. How do you roll back to a previous commit and keep your changes?
+Use:
+    git reset --soft <commit-hash>
+This moves HEAD to the commit, but keeps your changes in the staging area.
+
+16. What’s the difference between origin/HEAD and HEAD?
+HEAD             → Your current commit pointer in local branch.  
+origin/HEAD      → The default branch on the remote (e.g., origin/main).
+
+17. How do you resolve a conflict during a rebase?
+- Fix the conflicting files manually
+- Stage them using: git add .
+- Then continue rebase with: git rebase --continue
+
+18. How do you rename a remote branch?
+Step 1: Push the renamed branch
+    git push origin old-name:refs/heads/new-name
+Step 2: Delete the old remote branch
+    git push origin --delete old-name
+
+19. What is .gitignore? Does it affect files already committed?
+.gitignore tells Git to ignore certain files.
+It only works for new files.  
+To stop tracking already-committed files, use:
+    git rm --cached filename
+
+20. What is .gitattributes used for?
+Used to:
+- Define line ending rules (CRLF/LF)
+- Set merge strategies
+- Customize diff behaviors
+
+21. What does git gc do?
+Runs Git’s garbage collector.  
+It cleans up unnecessary files and optimizes repository size.
+
+22. What is a shallow clone?
+    git clone --depth=1 <repo>
+Only clones the most recent commit history — faster and lighter for large repos.
+
+23. How do you find which branch contains a specific commit?
+    git branch --contains <commit-hash>
+
+24. What is the reflog?
+    git reflog
+Shows a log of all changes to HEAD — useful for recovering lost commits.
+
+25. Can you recover a deleted branch?
+Yes, if its commit is still in reflog:
+    git reflog
+    git checkout -b branch-name <commit-hash>
+==============================
+FINAL BOSS ROUND – GIT SCENARIO QUESTIONS
+==============================
+
+1. You committed sensitive data (like a password) and pushed it. How do you remove it?
+- Use git filter-branch or BFG Repo Cleaner to completely erase the file from history.
+- Regenerate any credentials if exposed.
+- Force push the cleaned repo: git push --force
+
+2. You made changes in the wrong branch. How do you fix it?
+- Create a new branch from where you are: git checkout -b correct-branch
+- Then cherry-pick or merge the commits as needed
+- Or use git stash before switching, then apply
+
+3. You accidentally deleted a branch. Can you recover it?
+- Use: git reflog
+- Find the last commit on that branch
+- Then run: git checkout -b branch-name <commit-hash>
+
+4. A teammate force-pushed to a shared branch. How do you safely pull their changes?
+- First: git fetch origin
+- Then: git reset --hard origin/branch-name
+- (⚠️ Make sure you have no local changes or back them up first)
+
+5. Your pull shows conflicts in multiple files. What steps do you take?
+- Run: git status
+- Open each conflicting file and manually resolve
+- Stage resolved files: git add file
+- Finish merge or rebase: git commit OR git rebase --continue
+
+6. You want to apply a specific commit from another branch without merging everything.
+- Use: git cherry-pick <commit-hash>
+
+7. You need to create a clean version of your feature branch with only one commit.
+- Use: git rebase -i HEAD~n
+- Mark all commits as squash or fixup
+- Confirm new commit message and push
+
+8. A teammate rewrote history on main. Your push is now rejected. What do you do?
+- Run: git pull --rebase origin main
+- Resolve any conflicts
+- Then push normally
+
+9. You need to collaborate with someone but don’t want to share unfinished changes. What do you do?
+- Use: git stash to temporarily hide local changes
+- Work with the clean branch
+- Restore later: git stash pop
+
+10. You’ve cloned a repo, but pushing fails due to access denied. What are your options?
+- Check if the remote is HTTPS or SSH
+- If HTTPS, use a Personal Access Token (PAT)
+- Or switch to SSH and set up your public key with GitHub
+
+11. You need to remove a file from Git but keep it locally.
+- Run: git rm --cached filename
+- Then add the file to .gitignore
+
+12. How do you sync your fork with the original repository?
+- Add the original repo as upstream:
+    git remote add upstream <original-repo-url>
+- Then:
+    git fetch upstream
+    git merge upstream/main
+    (or git rebase if you prefer)
+
+13. You want to view the changes made to a file in a specific commit. What command do you use?
+- git show <commit-hash>:path/to/file
+
+14. You committed to the wrong repo. What do you do?
+- Add the correct remote: git remote add new-origin <correct-url>
+- Remove the wrong one: git remote remove origin
+- Push to the correct remote: git push -u new-origin main
+
+15. How do you completely remove a folder from Git’s history (including past commits)?
+- Use: git filter-branch --tree-filter 'rm -rf folder-name' -- --all
+- Or use BFG Repo Cleaner (simpler & faster)
