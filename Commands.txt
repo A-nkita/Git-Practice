@@ -1,7 +1,7 @@
 Real-life use cases
 # ==== SETUP GIT (Only once per machine) ====
-git config --global user.name "Your Name"
-git config --global user.email "your@email.com"
+git config --global user.name "Ankita J"
+git config --global user.email "jadhava2033@gmail.com"
 
 # ==== USE CASE: START A NEW PROJECT ====
 mkdir MyProject
@@ -12,7 +12,7 @@ echo "# MyProject" > README.md
 git add README.md
 git commit -m "Initial commit"
 git branch -M main
-git remote add origin https://github.com/YourUsername/MyProject.git
+git remote add origin https://github.com/A-nkita/MyProject.git
 git push -u origin main
 
 # ==== USE CASE: WORK ON NEW FEATURE ====
@@ -281,38 +281,86 @@ cat file1.txt file2.txt
 # Use echo and cat together for fast testing
 echo "Hello world" > test.txt
 cat test.txt
+---------------------------------------------------------------------------------------------------------
+
+========================
+GIT COMMANDS – CHEAT SHEET
+========================
+
+==== git diff ====
+Shows what changed in your working directory or between commits
+
+git diff                  # unstaged changes
+git diff --staged         # staged changes
+git diff main..branch     # difference between branches
 
 
+==== git checkout ====
+Switch branches or restore files
+
+git checkout branch-name  # switch branch
+git checkout -- file.txt  # discard changes in a file
 
 
+==== git reset ====
+Unstage or undo commits
+
+git reset file.txt                # unstage a file
+git reset --soft HEAD~1          # undo last commit, keep changes staged
+git reset --hard HEAD~1          # completely erase last commit and local changes
 
 
+==== git fetch ====
+Downloads latest changes from remote WITHOUT merging
+
+git fetch origin
 
 
+==== git rebase ====
+Reapplies commits on top of another branch (cleans up history)
+
+git rebase main
 
 
+========================
+GIT COMMAND DIFFERENCES
+========================
+
+== git pull vs git fetch vs git clone ==
+
+git clone  → copy a repo for the first time
+git fetch  → download changes without applying them
+git pull   → fetch + merge (applies changes to your branch)
 
 
+== git merge vs git rebase ==
+
+git merge:
+- Combines branches
+- Keeps full history
+- Creates a merge commit
+
+git rebase:
+- Rewrites history
+- Applies commits on top of another branch
+- Cleaner linear history
 
 
+========================
+INTERVIEW-STYLE ANSWERS
+========================
 
+Q: What’s the difference between git pull and git fetch?
+A: git pull = fetch + merge (applies changes).
+   git fetch = just downloads changes, no merge.
 
+Q: When to use git reset vs git checkout?
+A: reset → unstage or undo commits.
+   checkout → restore a file or switch branches.
 
+Q: Why use git rebase instead of merge?
+A: Rebase makes a cleaner, linear history — great for polishing before merging.
+   Merge keeps all branch history and context.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Q: What does git reset --hard HEAD~1 do?
+A: Removes last commit and ALL changes. Use with caution.
